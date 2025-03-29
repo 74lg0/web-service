@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // Eventos para manejar la interacción con el slider usando pointer events
+    // Manejo del slider con eventos pointer para buscar en el audio
     progressBar.addEventListener('pointerdown', () => {
         isSeeking = true;
         console.log("Inicio de interacción con el slider (pointerdown).");
@@ -75,11 +75,7 @@ document.addEventListener("DOMContentLoaded", function() {
         audio.currentTime = Number(progressBar.value);
     });
 
-    // Fallback para el evento change (útil en dispositivos táctiles)
-    progressBar.addEventListener('change', () => {
-        console.log("Cambio en slider (change). Valor:", progressBar.value);
-        audio.currentTime = Number(progressBar.value);
-    });
+    // Se elimina el listener 'change' para evitar llamadas redundantes que pudieran provocar el reinicio
 
     // Botón de play/pause
     playPauseBtn.addEventListener('click', () => {
@@ -123,10 +119,23 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log("Audio muted:", audio.muted);
     });
 
-    // Barra de volumen
+    progressBar.addEventListener('input', () => {
+        isSeeking = true;
+        console.log("Buscando en el audio. Valor actual:", progressBar.value);
+    });
+    
+        // Control de volumen
     volumeBar.addEventListener('input', () => {
-        audio.volume = volumeBar.value;
-        console.log("Volumen:", volumeBar.value);
+        const volume = Number(volumeBar.value);
+        audio.volume = volume;
+        console.log("Volumen ajustado a:", volume);
+    });
+
+
+    progressBar.addEventListener('change', () => {
+        isSeeking = false;
+        console.log("Interacción terminada. Actualizando tiempo a:", progressBar.value);
+        audio.currentTime = Number(progressBar.value);
     });
 
     // Inicialización
