@@ -1,0 +1,249 @@
+html {
+    background-color: #000000;
+}
+
+body {
+    margin-top: 0; /* Elimina el margen superior */
+    height: 100vh; /* Asegúrate de que el cuerpo ocupe toda la altura de la ventana */
+    overflow-y: scroll; /* Permite desplazamiento vertical */
+    overflow-x: hidden; /* Evita desplazamiento horizontal */
+}
+
+body::before {
+    content: "";
+    position: fixed; /* Cambia de absolute a fixed */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('fondo-img.png');
+    background-size: cover; /* Ajusta la imagen para cubrir toda la pantalla */
+    background-position: center center; /* Centra la imagen tanto horizontal como verticalmente */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    opacity: 0.3; /* Ajusta la opacidad aquí */
+    z-index: -1; /* Asegúrate de que el fondo esté detrás del contenido */
+}
+
+.content {
+    max-width: 800px; /* Ajusta el ancho máximo del contenido */
+    margin: 60px auto; /* Centra el contenido horizontalmente y añade margen superior */
+    padding: 20px; /* Añade un poco de espacio alrededor del contenido */
+    background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para resaltar el contenido */
+    border-radius: 15px; /* Bordes redondeados */
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    backdrop-filter: blur(5px); /* Aplica el desenfoque */
+    border: 2px solid #9400d3; /* Bordes morados */
+    padding: 10px; /* Espacio interno para que se vea mejor el borde */
+    box-shadow: 0 0 10px 2px #9400d3; /* Efecto de neón */
+    margin-top: 20px; /* Añade espacio superior */
+}
+
+p {
+    text-align: center;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    backdrop-filter: blur(5px); /* Aplica el desenfoque */
+    border: 2px solid #9400d3; /* Bordes morados */
+    padding: 10px; /* Espacio interno para que se vea mejor el borde */
+    box-shadow: 0 0 10px 2px #9400d3; /* Efecto de neón */
+}
+
+/* Lista y elementos de lista con efecto blur y bordes neón */
+ul.programming-languages {
+    list-style-type: none; /* Elimina los puntos de la lista */
+    padding: 0;
+    text-align: center;
+    margin: 20px 0;
+}
+
+ul.programming-languages li {
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    backdrop-filter: blur(5px); /* Aplica el desenfoque */
+    border: 2px solid #9400d3; /* Bordes morados */
+    padding: 10px;
+    margin: 10px auto; /* Espaciado entre los elementos de la lista */
+    display: flex; /* Para alinear el contenido en línea */
+    align-items: center; /* Centra el contenido verticalmente */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    width: 200px; /* Ancho fijo para todos los elementos de la lista */
+    height: 75px; /* Altura fija para que sea ovalado */
+    border-radius: 50px; /* Hace el borde ovalado */
+    box-shadow: 0 0 10px 2px #c300ff; /* Efecto de neón */
+    text-align: center; /* Centra el texto dentro de los elementos de la lista */
+}
+
+ul.programming-languages li img {
+    margin-right: 10px; /* Espacio entre la imagen y el texto */
+}
+
+/* profile photo */
+/* Estilo para la imagen de perfil con borde de neón */
+.profile-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; /* Ajusta según sea necesario */
+}
+
+.profile-img img {
+    border-radius: 50%; /* Hace la imagen circular */
+    border: 2px solid #9400d3; /* Borde morado */
+    box-shadow: 0 0 20px #9400d3, /* Sombra externa morada */
+                0 0 30px #9400d3, 
+                0 0 40px #9400d3, 
+                0 0 50px #9400d3; /* Agrega más capas de sombra para el efecto de neón */
+    transition: box-shadow 0.3s ease-in-out; /* Transición suave para el efecto */
+}
+
+.profile-img img:hover {
+    box-shadow: 0 0 30px #9400d3, 
+                0 0 40px #9400d3, 
+                0 0 50px #9400d3, 
+                0 0 60px #9400d3; /* Efecto de neón más intenso al pasar el ratón */
+}
+
+/* Contenedor del reproductor fijo en la parte superior */
+.audio-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #000000; /* Fondo pastel */
+    padding: 10px 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    opacity: 0.8;
+}
+
+/* Reproductor personalizado */
+.custom-audio-player {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #000000;
+    border-radius: 15px;
+    padding: 10px;
+    justify-content: space-between;
+    max-width: 800px; /* Ajusta el ancho máximo del reproductor */
+    margin: 0 auto;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    box-shadow: 0 0 10px rgb(76, 0, 255);
+    position: relative;
+}
+
+.cover-container {
+    width: 60px;
+    height: 60px;
+    border: 2px solid #9400d3;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.cover-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    animation: spin 5s linear infinite;
+}
+
+.song-details {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.song-info {
+    text-align: left;
+    color: #ffffff;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+}
+
+.controls button {
+    background: #8400ff;
+    color: #ffffff;
+    border: none;
+    font-size: 14px; /* Ajusta el tamaño de fuente */
+    cursor: pointer;
+    padding: 5px 10px; /* Ajusta el relleno */
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.3);
+    transition: background 0.3s ease;
+}
+
+.controls button:hover {
+    background: #6200ff;
+}
+
+.controls span {
+    font-size: 14px; /* Ajusta el tamaño de fuente */
+    color: #ff00d4;
+    margin: 0 5px;
+}
+
+.controls input[type="range"] {
+    -webkit-appearance: none; 
+    background: #ff04de;
+    height: 4px;
+    outline: none;
+    cursor: pointer;
+    border-radius: 4px;
+    margin: 0 5px;
+}
+
+.controls input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #6f00ff;
+    border: 2px solid #ffffff;
+}
+
+.controls input[type="range"]::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #ff6f91;
+    border: 2px solid #fff;
+}
+
+/* Lista de libros con círculos */
+.normal-list {
+    list-style-type: none; /* Elimina los puntos de la lista */
+    padding: 0;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.normal-list li {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #9400d3;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 50px;
+    box-shadow: 0 0 10px 2px #c300ff; /* Efecto de neón */
+    white-space: nowrap; /* Evita el salto de línea */
+    text-align: center; /* Centra el texto dentro del círculo */
+    vertical-align: middle; /* Centra el contenido verticalmente */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
